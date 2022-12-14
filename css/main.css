@@ -67,12 +67,16 @@ p {
     background-color: #58c93a;
 }
 
-.gallery-memes{
+.gallery-images.grid-container{
     display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 10px;
 }
 
-.ll{
-    width: 20%;
+.gallery-img{
+    width: 80%;
 }
 
 /* HEADER */

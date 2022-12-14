@@ -34,10 +34,8 @@
 
         </header>
 
-        <section class="gallery-memes">
-            <img class="ll" src="/images/memes/1.jpg" alt="">
-            <img class="ll" src="/images/memes/1.jpg" alt="">
-            <img class="ll" src="/images/memes/1.jpg" alt="">
+        <section class="gallery-images grid-container">
+            <!-- <img onclick="onImgClick('id')" class="gallery-img" src="/images/memes/1.jpg" alt=""> -->
         </section>
 
         <footer class="gallery-footer">
@@ -61,11 +59,13 @@
                         </tr>
                         <tr>
                             <td>
-                                <button type="submit" class="btn btn-primary">Set</button>
+                                <button type="submit" class="btn btn-primary">set</button>
                             </td>
                         </tr>
                     </table>
                 </form>
+                <button onclick="onTextSizeUp()">+</button>
+                <button onclick="onTextSizeDown()">-</button>
         </section>
 
         <div class="canvas-container">
@@ -80,6 +80,11 @@
 
 
     <script src="/js/ul-dl.service.js"></script>
+    <script src="/js/util.service.js"></script>
+
+    <script src="/js/gallery.service.js"></script>
+    <script src="/js/gallery.controller.js"></script>
+
     <script src="/js/meme.service.js"></script>
     <script src="/js/meme.controller.js"></script>
     <script src="/main.js"></script>

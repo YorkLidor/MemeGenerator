@@ -3,7 +3,7 @@
 let gElCanvas
 let gCtx
 
-function onInit() {
+function setCanvas() {
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
@@ -12,9 +12,9 @@ function onInit() {
 
 function renderMeme() {
     const currMeme = getMeme()
+    console.log('currMeme:', currMeme)
     const currImgUrl = getImgUrl(currMeme.imgId)
     drawImg(currImgUrl)
-    
 }
 
 function drawImg(imgUrl) {
@@ -26,14 +26,12 @@ function drawImg(imgUrl) {
     }
 }
 
-// size = '24', font = 'Arial', text = 'ssssssss', x = 220, y = 100
-
 function drawText() {
     const currMemeLines = getMemeLines()
-    console.log('currMemeLines:', currMemeLines)
     currMemeLines.forEach((line)=>{
         gCtx.font = `${line.size}px Arial`
         gCtx.fillText(`${line.txt}`, line.align.x, line.align.x)
+        gCtx.fillStyle = `${line.color}`
     })
 }
 
@@ -46,7 +44,16 @@ function resizeCanvas() {
 function onSubmitForm(ev){
     ev.preventDefault()
     const userText = document.getElementById('user-text').value
-    setMemeText(userText)
+    setCurrTextLine(userText)
+    // addNewText(userText) // שם טקסט חדש ברגע שיש אינפוט מהמשתמש
     renderMeme()
     console.log('rendering')
+}
+
+function onTextSizeUp(){
+    
+}
+
+function onTextSizeDown(){
+
 }

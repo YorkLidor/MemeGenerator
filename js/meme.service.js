@@ -1,19 +1,17 @@
 'use strict'
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-
-var gImgs = [{ id: 1, url: 'images/memes/1.jpg', keywords: ['funny', 'cat'] }, { id: 2, url: 'images/memes/2.jpg', keywords: ['funny', 'cat'] }];
-
 var gMeme = {
     imgId: 1,
     selectedLineIdx: 0,
+    url: '"/images/memes/1.jpg"',
     lines: [
         {
+            id: makeId(),
             txt: 'I sometimes eat Falafel',
             font: 'Ariel',
             size: 20,
-            align: {x: 250, y:250},
-            color: 'red'
+            align: { x: 250, y: 250 },
+            color: '#810CA8'
         }
     ]
 }
@@ -32,17 +30,44 @@ function getImgUrl(imgId) {
 }
 
 function getImgById(imgId) {
-    const currImg = gImgs.find((img) => img.id === imgId)
+    const currImg = gImgs.find((img) => img.id+'' === imgId)
     if (currImg) return currImg
     return null
 }
 
-function setMemeText(txt) {
-    gMeme.lines.push(_createLine(txt))
+// function addNewText(txt) {
+//     gMeme.lines.push(_createLine(txt))
+// }
+
+function setCurrTextLine(txt) {
+    gMeme.lines[0].txt = txt
 }
 
-function _createLine(txt='Defult Line',font ='Arial', size = 24, align = { x: 250, y: 250 }, color = 'red') {
+function setCurrMeme(pickImgId){
+
+    gMeme = {
+        imgId: pickImgId,
+        selectedLineIdx: 0,
+        url: '/images/memes/1.jpg',
+        lines: [
+            {
+                id: pickImgId,
+                txt: 'I sometimes eat Falafel',
+                font: 'Ariel',
+                size: 20,
+                align: { x: 250, y: 250 },
+                color: '#810CA8'
+            }
+        ]
+    }
+
+
+}
+    
+
+function _createLine(txt = 'Defult Line', font = 'Arial', size = 24, align = { x: 250, y: 250 }, color = '#000000') {
     return {
+        id: makeId(),
         txt,
         font,
         size,
