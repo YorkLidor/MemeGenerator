@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Meme Generator</title>
+</head>
+
+<body class="main-layout" onload="onInit()">
+
+    <!-- Header -->
+    <header class="main-header main-layout">
+        <div class="header-container flex space-around">
+            <div class="flex"><img  class="logo-img" src="/images/logo.png"></div>
+            <!-- <div class="logo">Blogin<span class="logo-dot">.</span></div> -->
+            <nav class="main-nav">
+                <ul class="flex clean-list nav-list">
+                    <li><a href="#" class="active">Journal</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Saved Memes</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <!-- <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button> -->
+        </div>
+    </header>
+
+    <!-- Meme Gallery -->
+    <section class="gallery-container">
+
+        <header class="gallery-header">
+
+        </header>
+
+        <section class="gallery-memes">
+            <img class="ll" src="/images/memes/1.jpg" alt="">
+            <img class="ll" src="/images/memes/1.jpg" alt="">
+            <img class="ll" src="/images/memes/1.jpg" alt="">
+        </section>
+
+        <footer class="gallery-footer">
+
+        </footer>
+
+    </section>
+
+    <!-- Meme Editor -->
+    <section class="edit-container">
+        <div class="canvas-container">
+            <canvas id="meme-canvas"
+              width="400"
+              height="400"
+              style="outline: 5px solid rgb(24, 3, 3)"
+            ></canvas>
+          </div>
+    </section>
+
+
+    <script src="/js/ul-dl.service.js"></script>
+    <script src="/js/meme.service.js"></script>
+    <script src="/js/meme.controller.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

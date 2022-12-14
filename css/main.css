@@ -1,0 +1,150 @@
+/* VARS */
+
+:root {
+
+    --clr0: #ff7f00;
+    --clr1: #58c93a;
+    --clr2: #606060;
+    /* card title color */
+    --clr3: #4f4e4e;
+    /* white color */
+    --clr4: #ffffff;
+    /* border color  */
+    --clr5: #e1e0e0;
+    /* card border color */
+    --clr6: #c2c2c2;
+    /* a footer color */
+    ---clr7: #818181;
+    /* footer bg */
+    ---clr8: #f8f8f8;
+    /* footer CR */
+    ---clr9: #a6a6a6;
+
+    /* bp */
+    --s: 600px;
+    --m: 740px;
+    --l: 980px;
+}
+
+/* BASE */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(144, 148, 146);
+}
+
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+/* LAYOUT */
+
+.main-layout > *:not(.full) {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* GALLERY CONTAINER */
+.gallery-container{
+    padding: 10px;
+    background-color: #58c93a;
+}
+
+.gallery-memes{
+    display: grid;
+}
+
+.ll{
+    width: 20%;
+}
+
+/* HEADER */
+
+.main-header {
+    background-color: var(--clr0);
+    color: var(--clr4);
+    box-shadow: inset 0px -5px 0 #000;
+}
+
+.main-header .main-nav a {
+    min-width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: box-shadow 0.4s;
+}
+
+.nav-list {
+    align-items: center;
+}
+
+.main-header .main-nav a:hover {
+    box-shadow: inset 0px -5px 0 var(--clr1);
+} 
+
+.main-header .main-nav a.active {
+    box-shadow: inset 0px -5px 0 var(--clr1);
+    color: var(--clr1);
+    cursor: default;
+}
+
+/* CANVAS */
+.canvas-container {
+    width: 60vw;
+    height: 70vh;
+}
+
+
+/* List Helper */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* LOGO */
+
+.logo-img {
+    width: 63%;
+    height: 62px;
+    align-self: center;
+}
+
+/* HELPERS */
+
+.flex {
+    display: flex;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.space-around {
+    justify-content: space-around;
+}
