@@ -6,8 +6,8 @@ let gCtx
 function setCanvas() {
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext('2d')
-    addEventListeners()
     resizeCanvas()
+    addEventListeners()
     renderMeme()
 }
 
@@ -30,8 +30,9 @@ function drawText() {
     const currMemeLines = getMemeLines()
     currMemeLines.forEach((line)=>{
         gCtx.font = `${line.size}px Arial`
+        gCtx.fillStyle = line.color + ''
         gCtx.fillText(`${line.txt}`, line.align.x, line.align.x)
-        gCtx.fillStyle = `${line.color}`
+        // gCtx.strokeText(`${line.txt}`, line.align.x, line.align.x)
     })
 }
 
@@ -63,6 +64,24 @@ function OnDecreaseTextSize(){
 function addEventListeners(){
     const colorPicker = document.getElementById("colorPicker")
     colorPicker.addEventListener("input", setNewColor)
+
+    const userText = document.getElementById("user-text")
+    userText.addEventListener("input", setTextBox)
+}
+
+function onNextText(){
+    //Move to next meme line
+    setNextText()
+
+    // Match text box to current line
+    const currLine = getCurrTextLine()
+    document.getElementById("user-text").value = currLine
+
+    // Match color picker to current color
+    const currColor = getCurrColorLine()
+    document.getElementById("colorPicker").value = currColor
+
+    renderMeme()
 }
 
 

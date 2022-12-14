@@ -54,19 +54,20 @@
                             <td><label for="name">Enter Text Here</label></td>
                             <td>
                                <label for="user-text" class="form-label"></label>
-                               <input type="text" class="text" name="background-input" id="user-text" placeholder="Enter Text Here">
+                               <input size="10" required type="text" class="text" name="background-input" id="user-text" placeholder="Enter Text Here">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button type="submit" class="btn btn-primary">set</button>
+                                <button type="submit" class="btn btn-primary">Set Text</button>
                             </td>
                         </tr>
                     </table>
                 </form>
                 <button onclick="onRaiseTextSize()">+</button>
                 <button onclick="OnDecreaseTextSize()">-</button>
-                <input  type="color" value="#000000" id="colorPicker"/>
+                <input  type="color" value="#FB2576" id="colorPicker"/>
+                <button onclick="onNextText()">Next text</button>
         </section>
 
         <div class="canvas-container">

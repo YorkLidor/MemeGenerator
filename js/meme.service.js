@@ -1,16 +1,22 @@
 'use strict'
 
-var gMeme = {
+let gMeme = {
     imgId: 1,
     selectedLineIdx: 0,
     lines: [
         {
-            id: makeId(),
-            txt: 'I sometimes eat Falafel',
+            txt: 'Enter your Text Here',
+            font: 'Ariel',
+            size: 30,
+            align: { x: 250, y: 250 },
+            color: '#FB2576'
+        },
+        {
+            txt: 'testttt',
             font: 'Ariel',
             size: 20,
-            align: { x: 250, y: 250 },
-            color: '#810CA8'
+            align: { x: 400, y: 400 },
+            color: '#FB2576'
         }
     ]
 }
@@ -29,7 +35,7 @@ function getImgUrl(imgId) {
 }
 
 function getImgById(imgId) {
-    const currImg = gImgs.find((img) => img.id+'' === imgId)
+    const currImg = gImgs.find((img) => img.id + '' === imgId)
     if (currImg) return currImg
     return null
 }
@@ -39,53 +45,55 @@ function getImgById(imgId) {
 // }
 
 function setCurrTextLine(txt) {
-    console.log('txt:', txt)
-    gMeme.lines[0].txt = txt
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function setCurrMeme(pickImgId){
-
-    gMeme = {
-        imgId: pickImgId,
-        selectedLineIdx: 0,
-        url: '/images/memes/1.jpg',
-        lines: [
-            {
-                id: pickImgId,
-                txt: 'I sometimes eat Falafel',
-                font: 'Ariel',
-                size: 20,
-                align: { x: 250, y: 250 },
-                color: '#810CA8'
-            }
-        ]
-    }
-
-
-}
-    
-
-function _createLine(txt = 'Defult Line', font = 'Arial', size = 24, align = { x: 250, y: 250 }, color = '#000000') {
-    return {
-        id: makeId(),
-        txt,
-        font,
-        size,
-        align,
-        color,
-    }
+function setCurrMeme(pickImgId) {
+    gMeme.imgId = pickImgId
 }
 
-function raiseTextSize(){
-    gMeme.lines[0].size++
+
+function raiseTextSize() {
+    gMeme.lines[gMeme.selectedLineIdx].size++
 }
 
-function decreaseTextSize(){
-    gMeme.lines[0].size--
+function decreaseTextSize() {
+    gMeme.lines[gMeme.selectedLineIdx].size--
 
 }
 
-function setNewColor(){
-    gMeme.lines[0].color = this.value
+function setNewColor() {
+    gMeme.lines[gMeme.selectedLineIdx].color = this.value
     renderMeme()
 }
+
+function setTextBox() {
+    gMeme.lines[gMeme.selectedLineIdx].txt = this.value
+    renderMeme()
+}
+
+function setNextText() {
+    if (gMeme.selectedLineIdx >=  gMeme.lines.length-1) {
+        gMeme.selectedLineIdx = 0
+    } else {
+        gMeme.selectedLineIdx++
+    }
+}
+
+function getCurrTextLine(){
+    return gMeme.lines[gMeme.selectedLineIdx].txt
+}
+
+function getCurrColorLine(){
+    return gMeme.lines[gMeme.selectedLineIdx].color
+}
+
+// function _createLine(txt = 'Defult Line', font = 'Arial', size = 24, align = { x: 250, y: 250 }, color = '#000000') {
+//     return {
+//         txt,
+//         font,
+//         size,
+//         align,
+//         color,
+//     }
+// }
