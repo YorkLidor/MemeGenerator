@@ -48,6 +48,26 @@
 
     <!-- Meme Editor -->
     <section class="edit-container">
+
+        <section class="meme-editor">
+                <form id="frmRegister" onsubmit="onSubmitForm(event)">
+                    <table>
+                        <tr>
+                            <td><label for="name">Enter Text Here</label></td>
+                            <td>
+                               <label for="user-text" class="form-label"></label>
+                               <input type="text" class="text" name="background-input" id="user-text" placeholder="Enter Text Here" title="Choose your color">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Set</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+        </section>
+
         <div class="canvas-container">
             <canvas id="meme-canvas"
               width="400"
@@ -55,6 +75,7 @@
               style="outline: 5px solid rgb(24, 3, 3)"
             ></canvas>
           </div>
+
     </section>
 
 

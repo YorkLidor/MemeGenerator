@@ -12,19 +12,12 @@ function onInit() {
 
 function renderMeme() {
     const currMeme = getMeme()
-    const currImgId = currMeme.imgId
-    const currImgUrl = getImgUrl(currImgId)
+    const currImgUrl = getImgUrl(currMeme.imgId)
     drawImg(currImgUrl)
     
 }
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
-}
-
-function drawImg(imgUrl='images/memes/5.jpg') {
+function drawImg(imgUrl) {
     const elImg = new Image() //Create a new html img element
     elImg.src = imgUrl //Send a network req to get that image, define the img src
     elImg.onload = () => {
@@ -33,8 +26,27 @@ function drawImg(imgUrl='images/memes/5.jpg') {
     }
 }
 
-function drawText(size = '24', font = 'Arial', text = 'Place Text Here', x = 220, y = 100) {
-    gCtx.font = `${size}px ${font}`
-    gCtx.fillText(`${text}`, x, y)
+// size = '24', font = 'Arial', text = 'ssssssss', x = 220, y = 100
+
+function drawText() {
+    const currMemeLines = getMemeLines()
+    console.log('currMemeLines:', currMemeLines)
+    currMemeLines.forEach((line)=>{
+        gCtx.font = `${line.size}px Arial`
+        gCtx.fillText(`${line.txt}`, line.align.x, line.align.x)
+    })
 }
 
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+}
+
+function onSubmitForm(ev){
+    ev.preventDefault()
+    const userText = document.getElementById('user-text').value
+    setMemeText(userText)
+    renderMeme()
+    console.log('rendering')
+}
