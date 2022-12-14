@@ -3,7 +3,6 @@
 var gMeme = {
     imgId: 1,
     selectedLineIdx: 0,
-    url: '"/images/memes/1.jpg"',
     lines: [
         {
             id: makeId(),
@@ -40,6 +39,7 @@ function getImgById(imgId) {
 // }
 
 function setCurrTextLine(txt) {
+    console.log('txt:', txt)
     gMeme.lines[0].txt = txt
 }
 
@@ -74,4 +74,18 @@ function _createLine(txt = 'Defult Line', font = 'Arial', size = 24, align = { x
         align,
         color,
     }
+}
+
+function raiseTextSize(){
+    gMeme.lines[0].size++
+}
+
+function decreaseTextSize(){
+    gMeme.lines[0].size--
+
+}
+
+function setNewColor(){
+    gMeme.lines[0].color = this.value
+    renderMeme()
 }

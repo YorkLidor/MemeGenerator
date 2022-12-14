@@ -6,13 +6,13 @@ let gCtx
 function setCanvas() {
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext('2d')
+    addEventListeners()
     resizeCanvas()
     renderMeme()
 }
 
 function renderMeme() {
     const currMeme = getMeme()
-    console.log('currMeme:', currMeme)
     const currImgUrl = getImgUrl(currMeme.imgId)
     drawImg(currImgUrl)
 }
@@ -47,13 +47,24 @@ function onSubmitForm(ev){
     setCurrTextLine(userText)
     // addNewText(userText) // שם טקסט חדש ברגע שיש אינפוט מהמשתמש
     renderMeme()
-    console.log('rendering')
 }
 
-function onTextSizeUp(){
-    
+function onRaiseTextSize(){
+    raiseTextSize()
+    renderMeme()
 }
 
-function onTextSizeDown(){
+function OnDecreaseTextSize(){
+    decreaseTextSize()
+    renderMeme()
 
 }
+
+function addEventListeners(){
+    const colorPicker = document.getElementById("colorPicker")
+    colorPicker.addEventListener("input", setNewColor)
+}
+
+
+
+
