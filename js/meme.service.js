@@ -87,47 +87,47 @@ function setTextBox() {
 }
 
 function setNextText() {
-    if (gMeme.selectedLineIdx >=  gMeme.lines.length-1) {
+    if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) {
         gMeme.selectedLineIdx = 0
     } else {
         gMeme.selectedLineIdx++
     }
 }
 
-function getCurrTextLine(){
+function getCurrTextLine() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
-function getCurrColorLine(){
+function getCurrColorLine() {
     return gMeme.lines[gMeme.selectedLineIdx].color
 }
 
-function addTextLine(){
+function addTextLine() {
     gMeme.lines.push(_createLine())
     gMeme.selectedLineIdx++
 }
 
-function deleteLine(){
-    if(gMeme.lines.length === 0) return
-    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+function deleteLine() {
+    if (gMeme.lines.length === 0) return
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     gMeme.selectedLineIdx--
 }
 
-function moveLineUpOrDown(directions){
-    if(directions === 1){
-        gMeme.lines[gMeme.selectedLineIdx].pos.y -=2
+function moveLineUpOrDown(directions) {
+    if (directions === 1) {
+        gMeme.lines[gMeme.selectedLineIdx].pos.y -= 2
     } else {
-        gMeme.lines[gMeme.selectedLineIdx].pos.y +=2
+        gMeme.lines[gMeme.selectedLineIdx].pos.y += 2
     }
 }
 
-function alignLine(directions){
-    if(directions === -1){
+function alignLine(directions) {
+    if (directions === -1) {
         gMeme.lines[gMeme.selectedLineIdx].pos.x = 100
-    } else if(directions === 0){
-        gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width/2
+    } else if (directions === 0) {
+        gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width / 2
     } else {
-        gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width-100
+        gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width - 100
     }
 }
 
