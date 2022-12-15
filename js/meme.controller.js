@@ -28,11 +28,29 @@ function drawImg(imgUrl) {
 
 function drawText() {
     const currMemeLines = getMemeLines()
-    currMemeLines.forEach((line)=>{
+    currMemeLines.forEach((line, idx) => {
         gCtx.font = `${line.size}px Arial`
-        gCtx.fillStyle = line.color + ''
-        gCtx.fillText(`${line.txt}`, line.align.x, line.align.x)
-        // gCtx.strokeText(`${line.txt}`, line.align.x, line.align.x)
+        gCtx.textAlign = line.align
+        gCtx.fillStyle = line.color 
+
+        // if first 3 lines
+        if (!line.pos) {
+            //centers on x axis
+            var x = gElCanvas.width / 2
+            if (idx === 0) {
+            //first line
+                var y = 40
+            } else if (idx === 1) {
+            //second line
+                y = gElCanvas.height - 40
+            } else {
+            //third line
+                y = gElCanvas.height / 2
+            }
+            line.pos = { x: x, y: y }
+        }
+        gCtx.fillText(line.txt, line.pos.x, line.pos.y, gElCanvas.width - 20)
+
     })
 }
 
@@ -42,7 +60,7 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
-function onSubmitForm(ev){
+function onSubmitForm(ev) {
     ev.preventDefault()
     const userText = document.getElementById('user-text').value
     setCurrTextLine(userText)
@@ -50,18 +68,18 @@ function onSubmitForm(ev){
     renderMeme()
 }
 
-function onRaiseTextSize(){
+function onRaiseTextSize() {
     raiseTextSize()
     renderMeme()
 }
 
-function OnDecreaseTextSize(){
+function OnDecreaseTextSize() {
     decreaseTextSize()
     renderMeme()
 
 }
 
-function addEventListeners(){
+function addEventListeners() {
     const colorPicker = document.getElementById("colorPicker")
     colorPicker.addEventListener("input", setNewColor)
 
@@ -69,7 +87,7 @@ function addEventListeners(){
     userText.addEventListener("input", setTextBox)
 }
 
-function onNextText(){
+function onNextText() {
     //Move to next meme line
     setNextText()
 
@@ -83,6 +101,15 @@ function onNextText(){
 
     renderMeme()
 }
+
+function onAddTextLine() {
+    // addTextLine()
+    document.getElementById('user-text').value = ''
+    setNewLine()
+    renderMeme()
+}
+
+
 
 
 

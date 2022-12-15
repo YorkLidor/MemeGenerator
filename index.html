@@ -12,13 +12,12 @@
 
     <!-- Header -->
     <header class="main-header main-layout">
-        <div class="header-container flex space-around">
-            <div class="flex"><img  class="logo-img" src="/images/logo.png"></div>
-            <!-- <div class="logo">Blogin<span class="logo-dot">.</span></div> -->
+        <div class="header-container flex space-around align-center">
+            <!-- <div class="flex"><img  class="logo-img" src="/images/logo.png"></div> -->
+            <div class="logo">memegen</div>
             <nav class="main-nav">
                 <ul class="flex clean-list nav-list">
-                    <li><a href="#" class="active">Journal</a></li>
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="onHeaderGalleryClick()">Gallery</a></li>
                     <li><a href="#">Saved Memes</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
@@ -27,15 +26,18 @@
         </div>
     </header>
 
+
     <!-- Meme Gallery -->
-    <section class="gallery-container">
+    <section class="gallery-container" >
 
-        <header class="gallery-header">
-
+        <header class="gallery-header flex">
+            <input type="text" placeholder="Enter search keyword" id="serch-input" size="50">
+            <section> funny commics</section>
+            <a href="#">more...</a>
         </header>
 
         <section class="gallery-images grid-container">
-            <!-- <img onclick="onImgClick('id')" class="gallery-img" src="/images/memes/1.jpg" alt=""> -->
+                <!-- <img onclick="onImgClick('id')" class="gallery-img" src="/images/memes/1.jpg" alt=""> -->
         </section>
 
         <footer class="gallery-footer">
@@ -44,43 +46,80 @@
 
     </section>
 
+
     <!-- Meme Editor -->
-    <section class="edit-container">
+    <section class="main-edit-container card display-none">
 
-        <section class="meme-editor">
-                <form id="frmRegister" onsubmit="onSubmitForm(event)">
-                    <table>
-                        <tr>
-                            <td><label for="name">Enter Text Here</label></td>
-                            <td>
-                               <label for="user-text" class="form-label"></label>
-                               <input size="10" required type="text" class="text" name="background-input" id="user-text" placeholder="Enter Text Here">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Set Text</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-                <button onclick="onRaiseTextSize()">+</button>
-                <button onclick="OnDecreaseTextSize()">-</button>
-                <input  type="color" value="#FB2576" id="colorPicker"/>
-                <button onclick="onNextText()">Next text</button>
-        </section>
-
-        <div class="canvas-container">
+        <div class="canvas-container flex">
             <canvas id="meme-canvas"
-              width="400"
-              height="400"
+              width="476"
+              height="546"
               style="outline: 5px solid rgb(24, 3, 3)"
             ></canvas>
-          </div>
+        </div>
 
+        <section class="meme-editor">
+            
+                <section class="editor row-1">
+                    <form id="frmRegister" onsubmit="onSubmitForm(event)">
+                        <table>
+                        <tr>
+                            <td>
+                               <label for="user-text" class="form-label"></label>
+                               <input size="10" required type="text" class="text text-line" name="user-text" id="user-text" placeholder="Enter Text Here">
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </table>
+                    </form>
+                </section>
+                
+                <section class="editor row-2">
+                    <button onclick="onAddTextLine()" class="btn btn-primary"><img class="icon" src="/images/icons/add.png"> </button>
+                    <button class="btn btn-primary"><img class="icon" src="/images/icons/trash.png"></button>
+                    <button class="btn btn-primary"><img class="icon" src="/images/icons/up.png"></button>
+                    <button class="btn btn-primary"><img class="icon" src="/images/icons/down.png"></button>
+                    <button class="btn small-square" onclick="onNextText()"><img class="icon" src="/images/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                </section>
+
+                <section class="editor row-3">
+                    <div>
+                        <button onclick="onRaiseTextSize()" class="btn btn-primary"><img class="icon" src="/images/icons/increase font - icon.png"></button>
+                        <button onclick="OnDecreaseTextSize()" class="btn btn-primary"><img class="icon" src="/images/icons/decrease font - icon.png"></button>
+                        <button class="btn btn-primary"><img class="icon" src="images/icons/align-to-left.png"></button>
+                        <button class="btn btn-primary"><img class="icon" src="images/icons/align-to-right.png"></button>
+                        <button class="btn btn-primary"><img class="icon" src="images/icons/center-text-alignment.png"></button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">
+                            <img class="icon" src="/images/icons/paint-board-and-brush.png">
+                            <input type="color" value="#FB2576" id="colorPicker"/>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="editor row-4">
+                    <button>emoji bar</button>
+                </section>
+
+                <section class="editor row-5">
+                    <button>share</button>
+                    <button>downlod</button>
+                </section>
+
+        </section>
+
+      
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        By Lidor York
+    </footer>
 
+
+    <!--JS SCRIPTS -->
     <script src="/js/ul-dl.service.js"></script>
     <script src="/js/util.service.js"></script>
 
