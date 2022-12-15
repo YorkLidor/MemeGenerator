@@ -102,18 +102,32 @@ function getCurrColorLine(){
     return gMeme.lines[gMeme.selectedLineIdx].color
 }
 
-function _createLine(align = { x: 100, y: 250 }, color = '#000000') {
-    return {
-        txt: 'New Line',
-        font: 'Arial',
-        size: 24,
-        align,
-        color,
-    }
-}
-
 function addTextLine(){
     gMeme.lines.push(_createLine())
     gMeme.selectedLineIdx++
+}
+
+function deleteLine(){
+    if(gMeme.lines.length === 0) return
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    gMeme.selectedLineIdx--
+}
+
+function moveLineUpOrDown(directions){
+    if(directions === 1){
+        gMeme.lines[gMeme.selectedLineIdx].pos.y -=2
+    } else {
+        gMeme.lines[gMeme.selectedLineIdx].pos.y +=2
+    }
+}
+
+function alignLine(directions){
+    if(directions === -1){
+        gMeme.lines[gMeme.selectedLineIdx].pos.x = 100
+    } else if(directions === 0){
+        gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width/2
+    } else {
+        gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width-100
+    }
 }
 

@@ -77,9 +77,9 @@
                 
                 <section class="editor row-2">
                     <button onclick="onAddTextLine()" class="btn btn-primary"><img class="icon" src="/images/icons/add.png"> </button>
-                    <button class="btn btn-primary"><img class="icon" src="/images/icons/trash.png"></button>
-                    <button class="btn btn-primary"><img class="icon" src="/images/icons/up.png"></button>
-                    <button class="btn btn-primary"><img class="icon" src="/images/icons/down.png"></button>
+                    <button onclick="onDeletLine()" class="btn btn-primary"><img class="icon" src="/images/icons/trash.png"></button>
+                    <button onclick="onMoveLineUpOrDown(1)" class="btn btn-primary"><img class="icon" src="/images/icons/up.png"></button>
+                    <button onclick="onMoveLineUpOrDown(-1)" class="btn btn-primary"><img class="icon" src="/images/icons/down.png"></button>
                     <button class="btn small-square" onclick="onNextText()"><img class="icon" src="/images/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
                 </section>
 
@@ -87,9 +87,9 @@
                     <div>
                         <button onclick="onRaiseTextSize()" class="btn btn-primary"><img class="icon" src="/images/icons/increase font - icon.png"></button>
                         <button onclick="OnDecreaseTextSize()" class="btn btn-primary"><img class="icon" src="/images/icons/decrease font - icon.png"></button>
-                        <button class="btn btn-primary"><img class="icon" src="images/icons/align-to-left.png"></button>
-                        <button class="btn btn-primary"><img class="icon" src="images/icons/align-to-right.png"></button>
-                        <button class="btn btn-primary"><img class="icon" src="images/icons/center-text-alignment.png"></button>
+                        <button onclick="onAlignLine(-1)" class="btn btn-primary"><img class="icon" src="images/icons/align-to-left.png"></button>
+                        <button onclick="onAlignLine(0)" class="btn btn-primary"><img class="icon" src="images/icons/align-to-right.png"></button>
+                        <button onclick="onAlignLine(1)" class="btn btn-primary"><img class="icon" src="images/icons/center-text-alignment.png"></button>
                     </div>
                     <div>
                         <button class="btn btn-primary">

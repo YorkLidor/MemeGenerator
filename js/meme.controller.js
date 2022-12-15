@@ -103,9 +103,23 @@ function onNextText() {
 }
 
 function onAddTextLine() {
-    // addTextLine()
     document.getElementById('user-text').value = ''
     setNewLine()
+    renderMeme()
+}
+
+function onDeletLine(){
+    deleteLine()
+    renderMeme()
+}
+
+function onMoveLineUpOrDown(directions){
+    moveLineUpOrDown(directions)
+    renderMeme()
+}
+
+function onAlignLine(directions){
+    alignLine(directions)
     renderMeme()
 }
 
