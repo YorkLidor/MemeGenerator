@@ -19,8 +19,7 @@ var gMeme = {
 }
 
 function setNewLine() {
-    //limited to 3 text inputs
-    if (gMeme.lines.length === 3) return
+    // if (gMeme.lines.length === 3) return
     gMeme.lines.push({
         txt: 'Enter your text here...',
         size: 30,
@@ -89,6 +88,9 @@ function setNextText() {
 
 function getCurrTextLine() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
+}
+function getCurrLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function getCurrColorLine() {
@@ -166,7 +168,7 @@ function isLineClicked(clickedPos, ctxObj) {
             return true
         }
     })
-    if(clickedLine) return true
+    if (clickedLine) return true
     return false
 }
 

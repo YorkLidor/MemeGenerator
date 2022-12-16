@@ -26,6 +26,7 @@ function drawImg(imgUrl) {
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText()
+        frameCurrLine()
     }
 }
 
@@ -34,20 +35,20 @@ function drawText() {
     currMemeLines.forEach((line, idx) => {
         gCtx.font = `${line.size}px ${line.font}`
         gCtx.textAlign = line.align
-        gCtx.fillStyle = line.color 
+        gCtx.fillStyle = line.color
         gCtx.strokeStyle = '#000000'
         // if first 3 lines
         if (!line.pos) {
             //centers on x axis
             var x = gElCanvas.width / 2
             if (idx === 0) {
-            //first line
+                //first line
                 var y = 40
             } else if (idx === 1) {
-            //second line
+                //second line
                 y = gElCanvas.height - 40
             } else {
-            //third line
+                //third line
                 y = gElCanvas.height / 2
             }
             line.pos = { x: x, y: y }
@@ -112,22 +113,22 @@ function onAddTextLine() {
     renderMeme()
 }
 
-function onDeletLine(){
+function onDeletLine() {
     deleteLine()
     renderMeme()
 }
 
-function onMoveLineUpOrDown(directions){
+function onMoveLineUpOrDown(directions) {
     moveLineUpOrDown(directions)
     renderMeme()
 }
 
-function onAlignLine(directions){
+function onAlignLine(directions) {
     alignLine(directions)
     renderMeme()
 }
 
-function onDownloadImg(elLink){
+function onDownloadImg(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
 }
@@ -173,14 +174,15 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     
     //Check if clicked on line
-    if (!isLineClicked(pos,gCtx)) return
+    if (!isLineClicked(pos, gCtx)) return
     
     //Set the clicked line -> (isDrag = true)
     setLineDrag(true)
-
+    
     //Save the start pos
     gStartPos = pos
-
+    
+    
     gElCanvas.style.cursor = 'grabbing'
 }
 
@@ -196,7 +198,7 @@ function onMove(ev) {
     const dy = pos.y - gStartPos.y
 
     //Update x&y of the dragged line 
-    moveDraggedLine(dx, dy,draggedLineIdx)
+    moveDraggedLine(dx, dy, draggedLineIdx)
 
     //Save the last pos
     gStartPos = pos
@@ -205,11 +207,28 @@ function onMove(ev) {
     renderMeme()
 }
 
-function onUp(){
+function onUp() {
     setLineDrag(false)
     gElCanvas.style.cursor = 'grab'
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function frameCurrLine() {
+    const currLine = getCurrLine()
+    const metrics = gCtx.measureText(currLine.txt)
+    const txtWidth = metrics.width
+    const txtHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent
+    gCtx.strokeStyle = 'red'
+    gCtx.strokeRect(
+        //X
+        currLine.pos.x - txtWidth / 1.95,
+        //Y    
+        currLine.pos.y - txtHeight / 1.15,
+        //Width
+        txtWidth + 8,
+        //Height
+        txtHeight + 5)
+}
 
 
 
