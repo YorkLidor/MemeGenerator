@@ -8,8 +8,49 @@ function setCanvas() {
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
     addEventListeners()
+    addListeners()
     renderMeme()
+
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+function addListeners() {
+    addMouseListeners()
+    // addTouchListeners()
+    //Listen for resize ev
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
+}
+
+function addMouseListeners() {
+    // gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    // gElCanvas.addEventListener('mouseup', onUp)
+}
+
+// function addTouchListeners() {
+//     gElCanvas.addEventListener('touchmove', onMove)
+//     gElCanvas.addEventListener('touchstart', onDown)
+//     gElCanvas.addEventListener('touchend', onUp)
+// }
+
+
+function onDown(ev) {
+    //Get position of mouse click {x: , y: }
+    const pos = getEvPos(ev)
+    
+    //If not clicked on line return
+    if (!isLineClicked(pos,gCtx)) return
+
+    // //תשנה באובייקט של העיגול 
+    // setCircleDrag(true)
+
+    // //Save the pos we start from
+    // gStartPos = pos
+    // document.body.style.cursor = 'grabbing'
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function renderMeme() {
     const currMeme = getMeme()
@@ -29,10 +70,10 @@ function drawImg(imgUrl) {
 function drawText() {
     const currMemeLines = getMemeLines()
     currMemeLines.forEach((line, idx) => {
-        gCtx.font = `${line.size}px Arial`
+        gCtx.font = `${line.size}px ${line.font}`
         gCtx.textAlign = line.align
         gCtx.fillStyle = line.color 
-
+        gCtx.strokeStyle = '#000000'
         // if first 3 lines
         if (!line.pos) {
             //centers on x axis
@@ -50,6 +91,7 @@ function drawText() {
             line.pos = { x: x, y: y }
         }
         gCtx.fillText(line.txt, line.pos.x, line.pos.y, gElCanvas.width - 20)
+        gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
 
     })
 }
@@ -64,7 +106,7 @@ function onSubmitForm(ev) {
     ev.preventDefault()
     const userText = document.getElementById('user-text').value
     setCurrTextLine(userText)
-    // addNewText(userText) // שם טקסט חדש ברגע שיש אינפוט מהמשתמש
+    setNextText()
     renderMeme()
 }
 
@@ -139,6 +181,9 @@ function onUploadImg() {
     // Send the image to the server
     doUploadImg(imgDataUrl, onSuccess)
 }
+
+
+
 
 
 

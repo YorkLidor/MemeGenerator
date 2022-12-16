@@ -20,8 +20,7 @@ var gImgs = [
     { id: 15, url: 'images/memes/15.jpg', keywords: ['funny', 'dog'] },
     { id: 16, url: 'images/memes/16.jpg', keywords: ['funny', 'dog'] },
     { id: 17, url: 'images/memes/17.jpg', keywords: ['funny', 'dog'] },
-    { id: 18, url: 'images/memes/118.jpg', keywords: ['funny', 'dog'] },
-  
+    { id: 18, url: 'images/memes/18.jpg', keywords: ['funny', 'dog'] },
     ];
 
 function getImages() {

@@ -1,44 +1,40 @@
 'use strict'
 
-let gMeme = {
-    imgId: 1,
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+var gMeme = {
+    imgId: null,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Enter your Text Here',
+            txt: 'Firsttttttt Textttttt',
             size: 30,
             align: 'center',
-            color: '#000000',
-            font: 'Ariel',
+            color: '#ffffff',
+            font: 'Impact',
             pos: null,
+            isDrag: false
         },
-        // {
-        //     txt: 'testttt',
-        //     font: 'Ariel',
-        //     size: 20,
-        //     align: { x: 400, y: 400 },
-        //     color: '#FB2576'
-        // }
     ]
 }
+
+
+
 
 function setNewLine() {
     //limited to 3 text inputs
     if (gMeme.lines.length === 3) return;
     gMeme.lines.push({
-        // isSticker: false,
         txt: 'Enter your text here...',
         size: 30,
         align: 'center',
-        color: '#000000',
-        font: 'Ariel',
+        color: '#ffffff',
+        font: 'Impact',
         pos: null,
-        // isDragged: false
+        isDrag: false,
     })
     gMeme.selectedLineIdx++
 }
-
-
 
 function getMeme() {
     return gMeme
@@ -131,3 +127,49 @@ function alignLine(directions) {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function getEvPos(ev) {
+    // Gets the offset pos , the default pos
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+    //Check if its a touch ev
+    if (TOUCH_EVS.includes(ev.type)) {
+        //soo we will not trigger the mouse ev
+        ev.preventDefault()
+        //Gets the first touch point
+        //מחזיר אובייקט עם מיקומים
+        ev = ev.changedTouches[0]
+        //Calc the right pos according to the touch screen
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
+}
+
+function isLineClicked(clickedPos,ctxObj) {
+
+    gMeme.lines.find((line,idx)=>{
+        //Returns object that contains the width of the text in the current font
+        const metrics = ctxObj.measureText(line.txt)
+        const textWidth = metrics.width
+
+        //If click on X axis of the line = true 
+        var isOnXaxis = clickedPos.x >= line.pos.x - (textWidth / 2) - 10 && clickedPos.x <= line.pos.x + (textWidth / 2)  + 10
+
+        //If also click on Y axis of the line
+        if (isOnXaxis && clickedPos.y >= line.pos.y - line.size && clickedPos.y <= line.pos.y + line.size - (line.size / 2)) {
+            gMeme.selectedLineIdx = idx
+            return true
+        }
+    })
+    // const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
