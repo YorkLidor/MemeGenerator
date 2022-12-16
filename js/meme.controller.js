@@ -2,55 +2,17 @@
 
 let gElCanvas
 let gCtx
+let gStartPos
 
 function setCanvas() {
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext('2d')
+    gElCanvas.style.cursor = 'grab'
     resizeCanvas()
     addEventListeners()
-    addListeners()
+    addGrabAndDropListeners()
     renderMeme()
-
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-function addListeners() {
-    addMouseListeners()
-    // addTouchListeners()
-    //Listen for resize ev
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        renderMeme()
-    })
-}
-
-function addMouseListeners() {
-    // gElCanvas.addEventListener('mousemove', onMove)
-    gElCanvas.addEventListener('mousedown', onDown)
-    // gElCanvas.addEventListener('mouseup', onUp)
-}
-
-// function addTouchListeners() {
-//     gElCanvas.addEventListener('touchmove', onMove)
-//     gElCanvas.addEventListener('touchstart', onDown)
-//     gElCanvas.addEventListener('touchend', onUp)
-// }
-
-
-function onDown(ev) {
-    //Get position of mouse click {x: , y: }
-    const pos = getEvPos(ev)
-    
-    //If not clicked on line return
-    if (!isLineClicked(pos,gCtx)) return
-
-    // //תשנה באובייקט של העיגול 
-    // setCircleDrag(true)
-
-    // //Save the pos we start from
-    // gStartPos = pos
-    // document.body.style.cursor = 'grabbing'
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function renderMeme() {
     const currMeme = getMeme()
@@ -181,6 +143,74 @@ function onUploadImg() {
     // Send the image to the server
     doUploadImg(imgDataUrl, onSuccess)
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//GRAB AND DROP SECTION//
+function addGrabAndDropListeners() {
+    addMouseListeners()
+    addTouchListeners()
+
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev) {
+    //Get position of the click {x: , y: }
+    const pos = getEvPos(ev)
+    
+    //Check if clicked on line
+    if (!isLineClicked(pos,gCtx)) return
+    
+    //Set the clicked line -> (isDrag = true)
+    setLineDrag(true)
+
+    //Save the start pos
+    gStartPos = pos
+
+    gElCanvas.style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+    //Allways check if there is a dragged line 
+    const draggedLineIdx = getDragedLineIdx()
+    if (draggedLineIdx === -1) return
+
+    const pos = getEvPos(ev)
+
+    //Calc the diff of move 
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+
+    //Update x&y of the dragged line 
+    moveDraggedLine(dx, dy,draggedLineIdx)
+
+    //Save the last pos
+    gStartPos = pos
+
+    //Render canvas after every move!
+    renderMeme()
+}
+
+function onUp(){
+    setLineDrag(false)
+    gElCanvas.style.cursor = 'grab'
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

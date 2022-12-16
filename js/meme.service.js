@@ -18,12 +18,9 @@ var gMeme = {
     ]
 }
 
-
-
-
 function setNewLine() {
     //limited to 3 text inputs
-    if (gMeme.lines.length === 3) return;
+    if (gMeme.lines.length === 3) return
     gMeme.lines.push({
         txt: 'Enter your text here...',
         size: 30,
@@ -128,21 +125,22 @@ function alignLine(directions) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//GRAB AND DROP SECTION//
 function getEvPos(ev) {
-    // Gets the offset pos , the default pos
+    //Gets the offset pos, the default pos
     let pos = {
         x: ev.offsetX,
         y: ev.offsetY,
     }
+
     //Check if its a touch ev
     if (TOUCH_EVS.includes(ev.type)) {
         //soo we will not trigger the mouse ev
         ev.preventDefault()
+
         //Gets the first touch point
-        //מחזיר אובייקט עם מיקומים
         ev = ev.changedTouches[0]
+
         //Calc the right pos according to the touch screen
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
@@ -152,24 +150,36 @@ function getEvPos(ev) {
     return pos
 }
 
-function isLineClicked(clickedPos,ctxObj) {
+function isLineClicked(clickedPos, ctxObj) {
 
-    gMeme.lines.find((line,idx)=>{
+    const clickedLine = gMeme.lines.find((line, idx) => {
         //Returns object that contains the width of the text in the current font
         const metrics = ctxObj.measureText(line.txt)
         const textWidth = metrics.width
 
-        //If click on X axis of the line = true 
-        var isOnXaxis = clickedPos.x >= line.pos.x - (textWidth / 2) - 10 && clickedPos.x <= line.pos.x + (textWidth / 2)  + 10
+        //Check if clicked on the X axis of the line 
+        const isOnXaxis = clickedPos.x >= line.pos.x - (textWidth / 2) - 10 && clickedPos.x <= line.pos.x + (textWidth / 2) + 10
 
-        //If also click on Y axis of the line
+        //Check if also clicked on the Y axis of the line
         if (isOnXaxis && clickedPos.y >= line.pos.y - line.size && clickedPos.y <= line.pos.y + line.size - (line.size / 2)) {
             gMeme.selectedLineIdx = idx
             return true
         }
     })
-    // const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    if(clickedLine) return true
+    return false
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function getDragedLineIdx() {
+    return gMeme.lines.findIndex((line) => line.isDrag === true)
+}
+
+function moveDraggedLine(x, y, idx) {
+    gMeme.lines[idx].pos.x += x
+    gMeme.lines[idx].pos.y += y
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
