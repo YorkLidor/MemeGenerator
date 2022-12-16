@@ -27,8 +27,11 @@ function drawImg(imgUrl) {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText()
         frameCurrLine()
+        setInputs()
     }
 }
+
+
 
 function drawText() {
     const currMemeLines = getMemeLines()
@@ -90,6 +93,14 @@ function addEventListeners() {
 
     const userText = document.getElementById("user-text")
     userText.addEventListener("input", setTextBox)
+
+    const userFont = document.getElementById("font-select")
+    userFont.addEventListener("input", setFontBox)
+}
+
+function setInputs() {
+    const currLine = getCurrLine()
+    document.getElementById("colorPicker").value = currLine.color
 }
 
 function onNextText() {
@@ -172,17 +183,17 @@ function addTouchListeners() {
 function onDown(ev) {
     //Get position of the click {x: , y: }
     const pos = getEvPos(ev)
-    
+
     //Check if clicked on line
     if (!isLineClicked(pos, gCtx)) return
-    
+
     //Set the clicked line -> (isDrag = true)
     setLineDrag(true)
-    
+
     //Save the start pos
     gStartPos = pos
-    
-    
+
+
     gElCanvas.style.cursor = 'grabbing'
 }
 
@@ -221,11 +232,11 @@ function frameCurrLine() {
     gCtx.strokeStyle = 'red'
     gCtx.strokeRect(
         //X
-        currLine.pos.x - txtWidth / 1.95,
+        currLine.pos.x - txtWidth / 1.75,
         //Y    
         currLine.pos.y - txtHeight / 1.15,
         //Width
-        txtWidth + 8,
+        txtWidth * 1.2,
         //Height
         txtHeight + 5)
 }

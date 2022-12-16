@@ -78,6 +78,11 @@ function setTextBox() {
     renderMeme()
 }
 
+function setFontBox() {
+    gMeme.lines[gMeme.selectedLineIdx].font = this.value
+    renderMeme()
+}
+
 function setNextText() {
     if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) {
         gMeme.selectedLineIdx = 0

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Chango&family=Modak&family=Monofett&family=Monoton&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <title>Meme Generator</title>
 </head>
@@ -92,10 +94,17 @@
                         <button onclick="onAlignLine(1)" class="btn btn-primary"><img class="icon" src="images/icons/align-to-right.png"></button>
                     </div>
                     <div>
+                        <label class="font-label" for="pet-select"></label>
+                        <select class="font-select" name="pets" id="font-select">
+                            <option value="impact">IMPACT</option>
+                            <option value="modak">Modak</option>
+                            <option value="arial">ARIAL</option>
+                        </select>
                         <button class="btn btn-primary">
                             <img class="icon" src="/images/icons/paint-board-and-brush.png">
                             <input type="color" value="#ffffff" id="colorPicker"/>
-                        </button>
+                        </button>                  
+
                     </div>
                 </section>
 
@@ -107,7 +116,6 @@
                     <a href="#" class="btn" onclick="onDownloadImg(this)" download="YourMeme.jpg"><button class="download-button">Download</button></a>
                     <button class="share-button" onclick="onUploadImg()">Share</button>
                 </section>
-
         </section>
 
       
