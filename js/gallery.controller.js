@@ -9,7 +9,7 @@ function renderGallery(filterdGallery){
         images = getImages()
     }
     var strHtmls = images.map(img => `
-    <img onclick="onImgPick('${img.id}')" class="gallery-img" src="${img.url}" alt="">`
+    <img onclick="onImgPick('${img.id}')" class="gallery-img" src="${img.url}">`
     )
     document.querySelector('.gallery-images').innerHTML = strHtmls.join('')
 }
