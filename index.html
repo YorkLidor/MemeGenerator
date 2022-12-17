@@ -39,9 +39,9 @@
             <section>
                 <nav class="gallery-nav">
                 <ul class="flex clean-list nav-list">
-                    <li><a href="#">Funny</a></li>
-                    <li><a href="#">Pets</a></li>
-                    <li><a href="#">Pepole</a></li>
+                    <li><a href="#" onclick="onFilterImages('funny')">Funny</a></li>
+                    <li><a href="#" onclick="onFilterImages('pet')">Pets</a></li>
+                    <li><a href="#" onclick="onFilterImages('pepole')">Pepole</a></li>
                     <!-- <li><a href="#">Cartoon</a></li> -->
                 </ul>
             </nav>
@@ -104,24 +104,21 @@
                         <button onclick="onAlignLine(0)" class="btn btn-primary"><img class="icon" src="../images/icons/center-text-alignment.png"></button>
                         <button onclick="onAlignLine(1)" class="btn btn-primary"><img class="icon" src="../images/icons/align-to-right.png"></button>
                     </div>
-                    <div>
+                    <div class="row-3-2">
                         <label class="font-label" for="pet-select"></label>
                         <select class="font-select" name="pets" id="font-select">
                             <option value="impact">IMPACT</option>
                             <option value="modak">Modak</option>
                             <option value="arial">ARIAL</option>
                         </select>
-                        <button class="btn btn-primary">
-                            <img class="icon" src="../images/icons/paint-board-and-brush.png">
                             <input type="color" value="#ffffff" id="colorPicker"/>
-                        </button>                  
-
+                            <button>Save Me</button>
                     </div>
                 </section>
 
-                <section class="editor row-4">
+                <!-- <section class="editor row-4">
                     <button>emoji bar</button>
-                </section>
+                </section> -->
 
                 <section class="editor row-5">
                     <a href="#" class="btn" onclick="onDownloadImg(this)" download="YourMeme.jpg"><button class="download-button">Download</button></a>
