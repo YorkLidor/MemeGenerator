@@ -22,7 +22,6 @@ var gMeme = {
 }
 
 function setNewLine() {
-    // if (gMeme.lines.length === 3) return
     gMeme.lines.push({
         txt: 'Enter your text here...',
         size: 30,
