@@ -3,10 +3,10 @@
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 var gImgs = [
-    { id: 0, url: '/images/memes/0.png', keywords: ['pepole'] },
-    { id: 1, url: './images/memes/1.jpg', keywords: ['pepole'] },
-    { id: 2, url: '../images/memes/2.jpg', keywords: ['pet'] },
-    { id: 3, url: '/images/memes/3.jpg', keywords: ['pet', 'pepole'] },
+    { id: 0, url: 'images/memes/0.png', keywords: ['pepole'] },
+    { id: 1, url: 'images/memes/1.jpg', keywords: ['pepole'] },
+    { id: 2, url: 'images/memes/2.jpg', keywords: ['pet'] },
+    { id: 3, url: 'images/memes/3.jpg', keywords: ['pet', 'pepole'] },
     { id: 4, url: 'images/memes/4.jpg', keywords: ['pet'] },
     { id: 5, url: 'images/memes/5.jpg', keywords: ['pepole'] },
     { id: 6, url: 'images/memes/6.jpg', keywords: ['funny', 'pepole'] },
