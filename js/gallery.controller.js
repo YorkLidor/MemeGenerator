@@ -10,7 +10,7 @@ function renderGallery(){
 
 function onImgPick(imgId){
     document.querySelector('.gallery-container').classList.add('display-none')
-    document.querySelector('.footer').classList.add('display-none')
+    document.querySelector('.main-layout-footer').classList.add('display-none')
     document.querySelector('.card').classList.remove('display-none')
     setCurrMeme(imgId)
     setCanvas()

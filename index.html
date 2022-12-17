@@ -10,13 +10,14 @@
     <title>Meme Generator</title>
 </head>
 
-<body class="main-layout" onload="onInit()">
+<body onload="onInit()">
+    <div class="main-screen full" onclick="toggleMenu()"></div>
 
     <!-- Header -->
-    <header class="main-header main-layout">
+    <header class="main-header full main-layout">
         <div class="header-container flex space-around align-center">
             <!-- <div class="flex"><img  class="logo-img" src="/images/logo.png"></div> -->
-            <div class="logo">memegen</div>
+            <img class="logo-img" src="../images/logo.png">
             <nav class="main-nav">
                 <ul class="flex clean-list nav-list">
                     <li><a href="#" onclick="onHeaderGalleryClick()">Gallery</a></li>
@@ -24,7 +25,7 @@
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
-            <!-- <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button> -->
+            <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
         </div>
     </header>
 
@@ -32,10 +33,19 @@
     <!-- Meme Gallery -->
     <section class="gallery-container" >
 
-        <header class="gallery-header flex">
-            <input type="text" placeholder="Enter search keyword" id="serch-input" size="50">
-            <section> funny commics</section>
-            <a href="#">more...</a>
+        <header class="gallery-header-1 gallery-header-2">
+            <input class="gallery-serch-input" type="text" placeholder="Search" id="serch-input" size="20">
+            <section>
+                <nav class="gallery-nav">
+                <ul class="flex clean-list nav-list">
+                    <li><a href="#">Funny</a></li>
+                    <li><a href="#">Pets</a></li>
+                    <li><a href="#">Pepole</a></li>
+                    <!-- <li><a href="#">Cartoon</a></li> -->
+                </ul>
+            </nav>
+            </section>
+            <!-- <a href="#">more...</a> -->
         </header>
 
         <section class="gallery-images grid-container">
@@ -56,7 +66,7 @@
             <canvas id="meme-canvas"
               width="476"
               height="546"
-              style="outline: 5px solid rgb(24, 3, 3)"
+              style="outline: rgb(0 0 0 / 80%) solid 5px"
             ></canvas>
         </div>
 
@@ -78,20 +88,20 @@
                 </section>
                 
                 <section class="editor row-2">
-                    <button onclick="onAddTextLine()" class="btn btn-primary"><img class="icon" src="/images/icons/add.png"> </button>
-                    <button onclick="onDeletLine()" class="btn btn-primary"><img class="icon" src="/images/icons/trash.png"></button>
-                    <button onclick="onMoveLineUpOrDown(1)" class="btn btn-primary"><img class="icon" src="/images/icons/up.png"></button>
-                    <button onclick="onMoveLineUpOrDown(-1)" class="btn btn-primary"><img class="icon" src="/images/icons/down.png"></button>
-                    <button class="btn small-square" onclick="onNextText()"><img class="icon" src="/images/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button onclick="onAddTextLine()" class="btn btn-primary"><img class="icon" src="../images/icons/add.png"> </button>
+                    <button onclick="onDeletLine()" class="btn btn-primary"><img class="icon" src="../images/icons/trash.png"></button>
+                    <button onclick="onMoveLineUpOrDown(1)" class="btn btn-primary"><img class="icon" src="../images/icons/up.png"></button>
+                    <button onclick="onMoveLineUpOrDown(-1)" class="btn btn-primary"><img class="icon" src="../images/icons/down.png"></button>
+                    <button class="btn small-square" onclick="onNextText()"><img class="icon" src="../images/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
                 </section>
 
                 <section class="editor row-3">
                     <div>
-                        <button onclick="onRaiseTextSize()" class="btn btn-primary"><img class="icon" src="/images/icons/increase font - icon.png"></button>
-                        <button onclick="OnDecreaseTextSize()" class="btn btn-primary"><img class="icon" src="/images/icons/decrease font - icon.png"></button>
-                        <button onclick="onAlignLine(-1)" class="btn btn-primary"><img class="icon" src="images/icons/align-to-left.png"></button>
-                        <button onclick="onAlignLine(0)" class="btn btn-primary"><img class="icon" src="images/icons/center-text-alignment.png"></button>
-                        <button onclick="onAlignLine(1)" class="btn btn-primary"><img class="icon" src="images/icons/align-to-right.png"></button>
+                        <button onclick="onRaiseTextSize()" class="btn btn-primary"><img class="icon" src="../images/icons/increase font - icon.png"></button>
+                        <button onclick="OnDecreaseTextSize()" class="btn btn-primary"><img class="icon" src="../images/icons/decrease font - icon.png"></button>
+                        <button onclick="onAlignLine(-1)" class="btn btn-primary"><img class="icon" src="../images/icons/align-to-left.png"></button>
+                        <button onclick="onAlignLine(0)" class="btn btn-primary"><img class="icon" src="../images/icons/center-text-alignment.png"></button>
+                        <button onclick="onAlignLine(1)" class="btn btn-primary"><img class="icon" src="../images/icons/align-to-right.png"></button>
                     </div>
                     <div>
                         <label class="font-label" for="pet-select"></label>
@@ -101,7 +111,7 @@
                             <option value="arial">ARIAL</option>
                         </select>
                         <button class="btn btn-primary">
-                            <img class="icon" src="/images/icons/paint-board-and-brush.png">
+                            <img class="icon" src="../images/icons/paint-board-and-brush.png">
                             <input type="color" value="#ffffff" id="colorPicker"/>
                         </button>                  
 
@@ -122,7 +132,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="main-layout-footer">
         By Lidor York
     </footer>
 

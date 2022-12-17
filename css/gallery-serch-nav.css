@@ -1,0 +1,49 @@
+.gallery-header-1 {
+    background-color: var(--clr1);
+    height: 7.8125rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gallery-header-2 {
+    font-family: 'Chango', cursive;
+    height: 3.8125rem;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-header-2 .gallery-nav a {
+    color: var(--clr3);
+    font-size: 1.3125rem;
+    font-weight: 500;
+    text-align: left;
+    min-width: 130px;
+    height: 70px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-header-2 .gallery-nav a:hover {
+    box-shadow: inset 0px -5px 0 var(--clr4);
+    color: var(--clr4);
+}
+
+.gallery-header-2 .gallery-nav a.active {
+    box-shadow: inset 0px -5px 0 var(--clr1);
+    color: var(--clr1);
+    cursor: default;
+}
+
+.gallery-serch-input{
+    height: 40px;
+    max-width: 30rem;
+    background-color: #22252C;
+    border-radius: 3rem;
+    padding-left: 10px;
+    width: 100%;
+    float: inline-start;
+    float: left;
+    color: #ffffff;
+}
