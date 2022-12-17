@@ -1,6 +1,9 @@
 'use strict'
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+const MEME_KEY = 'memeDB'
+
+var gSavedMems = []
 
 var gMeme = {
     imgId: null,
@@ -190,3 +193,8 @@ function moveDraggedLine(x, y, idx) {
     gMeme.lines[idx].pos.y += y
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// function memeSave(){
+//     gSavedMems.push(gMeme)
+//     saveToStorage(MEME_KEY, gSavedMems)
+// }

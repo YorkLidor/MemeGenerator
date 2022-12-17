@@ -241,7 +241,13 @@ function frameCurrLine() {
         txtHeight + 5)
 }
 
+// function onMemeSave(){
+//     memeSave()
+// }
 
+// function onGoToSave(){
+
+// }
 
 
 

@@ -22,7 +22,6 @@ var gImgs = [
     { id: 16, url: 'images/memes/16.jpg', keywords: ['pepole'] },
     { id: 17, url: 'images/memes/17.jpg', keywords: ['pepole'] },
     { id: 18, url: 'images/memes/18.jpg', keywords: ['pepole'] },
-    // { id: 19, url: 'images/memes/19.jpg', keywords: ['funny', 'dog'] },
     ];
 
 function getImages() {
@@ -33,3 +32,4 @@ function filterImages(category){
     return gImgs.filter((img)=>{ if(img.keywords.includes(category)){return img} }
     )
 }
+
