@@ -65,8 +65,8 @@
 
         <div class="canvas-container flex">
             <canvas id="meme-canvas"
-              width="476"
-              height="546"
+              width="500"
+              height="500"
               style="outline: rgb(0 0 0 / 80%) solid 5px"
             ></canvas>
         </div>
@@ -90,7 +90,7 @@
                 
                 <section class="editor row-2">
                     <button onclick="onAddTextLine()" class="btn btn-primary"><img class="icon" src="images/icons/add.png"> </button>
-                    <button onclick="onDeletLine()" class="btn btn-primary"><img class="icon" src="images/icons/trash.png"></button>
+                    <button onclick="onDeletLine()" class="btn btn-delete btn-primary"><img class="icon" src="images/icons/trash.png"></button>
                     <button onclick="onMoveLineUpOrDown(1)" class="btn btn-primary"><img class="icon" src="images/icons/up.png"></button>
                     <button onclick="onMoveLineUpOrDown(-1)" class="btn btn-primary"><img class="icon" src="images/icons/down.png"></button>
                     <button class="btn small-square" onclick="onNextText()"><img class="icon" src="images/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
@@ -116,9 +116,18 @@
                     </div>
                 </section>
 
-                <!-- <section class="editor row-4">
-                    <button>emoji bar</button>
-                </section> -->
+                <section class="editor row-4">
+                    <span class="sticker" onclick="onAddSticker(this)">&#128519;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128513;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128514;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128512;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128526;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128081;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128150;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#128640;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#11088;</span>
+                    <span class="sticker" onclick="onAddSticker(this)">&#127936;</span>
+                </section>
 
                 <section class="editor row-5">
                     <a href="#" class="btn" onclick="onDownloadImg(this)" download="YourMeme.jpg"><button class="download-button">Download</button></a>
@@ -131,7 +140,7 @@
 
     <!-- Footer -->
     <footer class="main-layout-footer">
-        By Lidor York
+        By Lidor York &#128516
     </footer>
 
 

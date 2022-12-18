@@ -249,6 +249,11 @@ function frameCurrLine() {
 
 // }
 
+function onAddSticker(elSticker){
+    setNewLine(elSticker.innerText)
+    renderMeme()
+}
+
 
 
 

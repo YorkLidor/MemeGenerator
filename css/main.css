@@ -36,9 +36,10 @@ body {
     margin: 0;
     background-color: var(--clr0);
     padding: 1.125rem;
-    background-image: url(images/frame.png);
+    background-image: url(/images/frame.png);
     background-size: cover;
     height: 100vh;
+    
     
 }
 
@@ -65,6 +66,14 @@ p {
     border-radius: 0.5rem;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
     position: relative;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+}
+.btn.btn-delete:hover{
+    background:linear-gradient(to bottom, #c65353 5%, #d12727 100%);
 }
 
 /* LAYOUT */
@@ -142,7 +151,7 @@ p {
 
 /* SCROLL BAR */
 /* width */
-/* .gallery-images {
+.gallery-images {
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -150,19 +159,19 @@ p {
 .gallery-images::-webkit-scrollbar {
     width: 10px;
     background-color: var(--clr0);
-} */
+}
 
 /* Track */
-/* .gallery-images::-webkit-scrollbar-track {
+.gallery-images::-webkit-scrollbar-track {
     border-radius: 20px;
-} */
+}
 
 /* Handle */
-/* .gallery-images::-webkit-scrollbar-thumb {
+.gallery-images::-webkit-scrollbar-thumb {
     width: 10px;
     background: red;
     border-radius: 10px;
-} */
+}
 
 
 /* EDIT SECTION */
@@ -171,9 +180,8 @@ p {
 
 .main-edit-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-columns: repeat(auto-fit, minmax(520px,1fr));
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(420px,1fr));
+    /* justify-items: center; */
     padding-top: 5rem;
     padding-bottom: 0;
     gap: 10px;
@@ -189,7 +197,6 @@ p {
 #meme-canvas {
     background-color: rgb(191, 174, 174);
     border-radius: 4.3125rem;
-
 }
 
 .meme-editor {
@@ -222,6 +229,21 @@ p {
     align-items: end;
     color: rgb(119, 117, 117);
 }
+
+.editor.row-4{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+    background: linear-gradient(90deg, rgb(15 155 179 / 76%) 40%, rgb(48 187 116 / 76%) 60%);
+    margin-bottom: 0.5rem;
+}
+
+.sticker{
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 
 /* List Helper */
 
@@ -373,7 +395,13 @@ body.menu-open .main-screen {
     opacity: 1;
 }
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
 @media (max-width: 650px) {
+    .main-edit-container{
+            padding-top: 2rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+    }
     .meme-editor {
         height: 22.125rem;
         background-color: var(--clr1);
@@ -392,25 +420,12 @@ body.menu-open .main-screen {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-    /* .main-header .main-nav a {
-        display: block;
-        text-align: center;
-        padding: 13px 10px;
-        border-bottom: 1px solid #ccc;
-        background-color: #fff;
-
-        transition: background-color .6s;
-    } */
     .logo-img {
         width: 28%;
-    }
-    .main-edit-container{
-        padding-top: 10px;
     }
     .canvas-container{
         height: 500px;
     }
-
     .menu-toggle-btn {
         display:inline;
     }
@@ -480,11 +495,7 @@ body.menu-open .main-screen {
     }
 }
 
-@media (max-width: 480px) {
-    .meme-editor {
-        width: 21rem;
-        height: 25.125rem;
-    }
+@media (max-width: 510px) {
     .canvas-container{
         height: 350px;
     }
@@ -498,6 +509,12 @@ body.menu-open .main-screen {
         display: flex;
         flex-direction: column-reverse;
         padding-top: 1rem;
+    }
+}
+
+@media (max-width: 476px) {
+    .main-edit-container {
+        grid-template-columns: repeat(auto-fit, minmax(380px,1fr));
     }
 }
 
@@ -515,20 +532,19 @@ body.menu-open .main-screen {
     .gallery-serch-input{
         margin-top: -2rem;
     }
-    .meme-editor {
-        width: 28rem;
-        height: 29.125rem;
-    }
     .main-edit-container {
         grid-template-columns: repeat(auto-fit, minmax(374px,1fr));
     }
     .canvas-container {
-        height: 280px;
+        height: 80%;
     }
     .share-button{
         padding: 5px 10px; 
     }
     .download-button{
         padding: 5px 10px;
+    }
+    .meme-editor{
+        height: 80%;
     }
 }

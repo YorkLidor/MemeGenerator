@@ -10,7 +10,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Firsttttttt Textttttt',
+            txt: 'Enter your first text...',
             size: 30,
             align: 'center',
             color: '#ffffff',
@@ -21,9 +21,9 @@ var gMeme = {
     ]
 }
 
-function setNewLine() {
+function setNewLine(txtOrSticker = 'Enter your text here...') {
     gMeme.lines.push({
-        txt: 'Enter your text here...',
+        txt: txtOrSticker,
         size: 30,
         align: 'center',
         color: '#ffffff',
@@ -197,3 +197,5 @@ function moveDraggedLine(x, y, idx) {
 //     gSavedMems.push(gMeme)
 //     saveToStorage(MEME_KEY, gSavedMems)
 // }
+
+
