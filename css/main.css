@@ -1,6 +1,6 @@
-@import './buttons.css';
-@import './font-select-box.css';
-@import './gallery-serch-nav.css';
+@import '/css/buttons.css';
+@import '/css/font-select-box.css';
+@import '/css/gallery-serch-nav.css';
 
 /* VARS */
 
@@ -13,17 +13,6 @@
     --clr2: #969aea;
     /* haeder text color */
     --clr3: #ffffff;
-
-    --clr4: #000b2b;
-    /* border color  */
-    --clr5: #e1e0e0;
-    /* card border color */
-    --clr6: #c2c2c2;
-
-    /* bp */
-    --s: 600px;
-    --m: 740px;
-    --l: 980px;
 }
 
 /* BASE */
@@ -179,14 +168,11 @@ p {
 /* CANVAS */
 
 .main-edit-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px,1fr));
-    /* justify-items: center; */
-    padding-top: 5rem;
-    padding-bottom: 0;
-    gap: 10px;
-    height: 80%;
-    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding-top: 4rem;
 }
 
 .canvas-container {
@@ -200,9 +186,7 @@ p {
 }
 
 .meme-editor {
-    /* height: 37.125rem; */
-    background-color: var(--clr1);
-    /* width: 34rem; */
+    background: linear-gradient(90deg, rgba(41, 43, 43, 0.861) 40%, rgba(47, 48, 47, 0.828) 60%);
     border-radius: 4.3125rem;
     display: flex;
     flex-direction: column;
@@ -280,62 +264,6 @@ p {
     border-radius: 7px;
 }
 
-/* #swatch{
-    background: white;
-    box-shadow: 1em 1em 1em rgba(0, 0, 0, .1);
-    display: flex;
-    flex-direction: column;
-}
-  
-#swatch .info{
-    padding: 1em;
-}
-  
-#swatch h1{
-    margin: 0;
-    text-transform: uppercase;
-}
-  
-#swatch h2{
-    font-weight: normal;
-    margin: 0;
-}
-  
-input[type="color"] {
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background: none;
-    border: 0;
-    cursor: pointer;
-    height: 15em;
-    padding: 0;
-    width: 15em;
-}
-  
-*:focus{
-    border-radius: 0;
-    outline: none;
-}
-  
-::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-  
-::-webkit-color-swatch{
-    border: 0;
-    border-radius: 0;
-}
-  
-::-moz-color-swatch,
-::-moz-focus-inner{
-    border: 0;
-}
-  
-::-moz-focus-inner{
-    padding: 0;
-} */
-
 /* HELPERS */
 
 .flex {
@@ -395,21 +323,21 @@ body.menu-open .main-screen {
     opacity: 1;
 }
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+@media (max-width: 1000px) {
+    .main-edit-container {
+        padding-top: 1rem;
+        gap: 0.5rem;
+    }
+    .canvas-container{
+        height: 500px;
+    }
+}
 
 @media (max-width: 650px) {
     .main-edit-container{
-            padding-top: 2rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-    }
-    .meme-editor {
-        height: 22.125rem;
-        background-color: var(--clr1);
-        border-radius: 4.3125rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        gap: 0.5rem;
     }
     .main-header .main-nav a {
         color: var(--clr3);
@@ -422,9 +350,6 @@ body.menu-open .main-screen {
     }
     .logo-img {
         width: 28%;
-    }
-    .canvas-container{
-        height: 500px;
     }
     .menu-toggle-btn {
         display:inline;
@@ -486,21 +411,15 @@ body.menu-open .main-screen {
     }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 550px) {
     .canvas-container{
         height: 400px;
     }
-    .main-edit-container{
-        grid-template-columns: repeat(auto-fit, minmax(475px,1fr));
-    }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 445px) {
     .canvas-container{
         height: 350px;
-    }
-    .main-edit-container{
-        grid-template-columns: repeat(auto-fit, minmax(435px,1fr));
     }
     .btn{
         margin: 2px;
@@ -509,12 +428,6 @@ body.menu-open .main-screen {
         display: flex;
         flex-direction: column-reverse;
         padding-top: 1rem;
-    }
-}
-
-@media (max-width: 476px) {
-    .main-edit-container {
-        grid-template-columns: repeat(auto-fit, minmax(380px,1fr));
     }
 }
 
@@ -532,19 +445,7 @@ body.menu-open .main-screen {
     .gallery-serch-input{
         margin-top: -2rem;
     }
-    .main-edit-container {
-        grid-template-columns: repeat(auto-fit, minmax(374px,1fr));
-    }
     .canvas-container {
-        height: 80%;
-    }
-    .share-button{
-        padding: 5px 10px; 
-    }
-    .download-button{
-        padding: 5px 10px;
-    }
-    .meme-editor{
         height: 80%;
     }
 }
