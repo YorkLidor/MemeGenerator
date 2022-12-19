@@ -25,7 +25,7 @@ body {
     margin: 0;
     background-color: var(--clr0);
     padding: 1.125rem;
-    background-image: url(/images/frame.png);
+    background-image: url(images/frame.png);
     background-size: cover;
     height: 100vh;
     
